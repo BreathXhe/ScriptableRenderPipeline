@@ -80,6 +80,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed geometric normal use for shadow bias with PBR master node in forward
 - Fixed error message when having more than one directional light casting shadow
 - Fixed error when trying to display preview of Camera or PlanarReflectionProbe
+- Fixed min-max and amplitude clamping value in inspector of vertex displacement materials
 
 ### Changed
 - ColorPyramid compute shader passes is swapped to pixel shader passes on platforms where the later is faster (Nintendo Switch).
@@ -101,6 +102,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Shader code refactor: Move pragma definition of vertex and pixel shader inside pass + Move SURFACE_GRADIENT definition in XXXData.hlsl
 - Micro-shadowing in Lit forward now use ambientOcclusion instead of SpecularOcclusion
 - Upgraded FrameSettings workflow, DebugMenu and Inspector part relative to it.
+- LayeredLit layers' foldout are now grouped in one main foldout per layer
 
 ## [5.2.0-preview] - 2018-11-27
 
