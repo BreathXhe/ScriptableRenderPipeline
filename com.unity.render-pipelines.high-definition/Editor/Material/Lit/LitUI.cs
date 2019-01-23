@@ -593,12 +593,12 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
             }
         }
 
-        protected void DoLayerGUI(Material material, int layerIndex, bool isLayeredLit, bool showHeightMap, string layerPrefix = "", uint inputToggle = (uint)Expandable.Input, uint detailToggle = (uint)Expandable.Detail, Color colorDot = default(Color))
+        protected void DoLayerGUI(Material material, int layerIndex, bool isLayeredLit, bool showHeightMap, uint inputToggle = (uint)Expandable.Input, uint detailToggle = (uint)Expandable.Detail, Color colorDot = default(Color), bool subHeader = false)
         {
             UVBaseMapping uvBaseMapping = (UVBaseMapping)UVBase[layerIndex].floatValue;
             float X, Y, Z, W;
 
-            using (var header = new HeaderScope(layerPrefix + Styles.InputsText, inputToggle, this, colorDot: colorDot))
+            using (var header = new HeaderScope(Styles.InputsText, inputToggle, this, colorDot: colorDot, subHeader: subHeader))
             {
                 if (header.expanded)
                 {
@@ -775,7 +775,7 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 }
             }
 
-            using (var header = new HeaderScope(layerPrefix + Styles.detailText, detailToggle, this, colorDot: colorDot))
+            using (var header = new HeaderScope(Styles.detailText, detailToggle, this, colorDot: colorDot, subHeader: subHeader))
             {
                 if (header.expanded)
                 {
