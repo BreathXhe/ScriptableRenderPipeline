@@ -683,12 +683,21 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                                     HeightmapParametrization parametrization = (HeightmapParametrization)heightParametrization[layerIndex].floatValue;
                                     if (parametrization == HeightmapParametrization.MinMax)
                                     {
+                                        EditorGUI.BeginChangeCheck();
                                         m_MaterialEditor.ShaderProperty(heightMin[layerIndex], Styles.heightMapMinText);
+                                        if (EditorGUI.EndChangeCheck())
+                                            heightMin[layerIndex].floatValue = Mathf.Min(heightMin[layerIndex].floatValue, heightMax[layerIndex].floatValue);
+                                        EditorGUI.BeginChangeCheck();
                                         m_MaterialEditor.ShaderProperty(heightMax[layerIndex], Styles.heightMapMaxText);
+                                        if (EditorGUI.EndChangeCheck())
+                                            heightMax[layerIndex].floatValue = Mathf.Max(heightMin[layerIndex].floatValue, heightMax[layerIndex].floatValue);
                                     }
                                     else
                                     {
+                                        EditorGUI.BeginChangeCheck();
                                         m_MaterialEditor.ShaderProperty(heightTessAmplitude[layerIndex], Styles.heightMapAmplitudeText);
+                                        if (EditorGUI.EndChangeCheck())
+                                            heightTessAmplitude[layerIndex].floatValue = Mathf.Max(0f, heightTessAmplitude[layerIndex].floatValue);
                                         m_MaterialEditor.ShaderProperty(heightTessCenter[layerIndex], Styles.heightMapCenterText);
                                     }
 
